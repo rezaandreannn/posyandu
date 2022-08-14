@@ -1,0 +1,49 @@
+<?php
+
+use App\Http\Controllers\BalitaController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ImunisasibalitaController;
+use App\Http\Controllers\SettingController;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('frond.index');
+});
+
+Route::middleware('auth', 'ceklogin:admin')->group(function () {
+    Route::Resource('role', 'App\Http\Controllers\RoleController');
+    Route::Resource('user', 'App\Http\Controllers\UserController');
+    Route::get('setting', [SettingController::class, 'edit'])->name('setting.edit');
+    Route::patch('setting/{setting}', [SettingController::class, 'update'])->name('setting.update');
+});
+
+Route::middleware('auth', 'ceklogin:user,admin')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+    // balita
+    Route::Resource('balita', 'App\Http\Controllers\BalitaController')->except(['destroy', 'edit', 'update']);
+    Route::get('balita/{balita}/edit', [BalitaController::class, 'edit'])->name('balita.edit');
+    Route::patch('balita/{balita}', [BalitaController::class, 'update'])->name('balita.update');
+    Route::delete('balita/{balita}', [BalitaController::class, 'destroy'])->name('balita.destroy');
+    Route::get('imunisasi/balita/{id}', [BalitaController::class, 'imunisasiBalita'])->name('balita.imunisasi');
+
+    // imunisasi balita
+    Route::Resource('imunisasibalita', 'App\Http\Controllers\ImunisasibalitaController');
+    Route::get('antri/balita', [ImunisasibalitaController::class, 'antri'])->name('imunisasibalita.antri');
+});
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
+
+require __DIR__ . '/auth.php';
