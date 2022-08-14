@@ -2,11 +2,10 @@
 
 namespace App\Models;
 
-use App\Models\Balita;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Imunisasibalita extends Model
+class Vitaminbalita extends Model
 {
     use HasFactory;
 
@@ -14,8 +13,7 @@ class Imunisasibalita extends Model
 
     protected $with = 'balita';
 
-    const NAMAIMUNISASI = ['Hepatitis B', 'BCG', 'Polio', 'DPT', 'Campak'];
-    const JENISIMUNISASI = ['HB', 'BCG polio 1', 'DPT/HB 1'];
+    const JENISVITAMIN = ['Vitamin A Kapsul Biru', 'Vitamin A Kapsul Merah'];
 
     public function balita()
     {

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateImunisasibalitasTable extends Migration
+class CreateVitaminbalitasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateImunisasibalitasTable extends Migration
      */
     public function up()
     {
-        Schema::create('imunisasibalitas', function (Blueprint $table) {
+        Schema::create('vitaminbalitas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('balita_id');
-            $table->string('nama')->nullable();
-            $table->string('keterangan')->nullable();
             $table->string('jenis')->nullable();
             $table->string('status')->default('antri');
             $table->string('posyandu')->nullable();
@@ -32,6 +30,6 @@ class CreateImunisasibalitasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('imunisasibalitas');
+        Schema::dropIfExists('vitaminbalitas');
     }
 }

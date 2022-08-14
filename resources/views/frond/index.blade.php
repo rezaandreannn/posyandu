@@ -1,4 +1,4 @@
-<x-frond-layout>
+<x-frond-layout title="Beranda">
     <div class="site-blocks-cover" style="overflow: hidden;">
         <div class="container">
             <div class="row align-items-center justify-content-center">

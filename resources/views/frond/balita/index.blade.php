@@ -1,4 +1,4 @@
-<x-frond-layout>
+<x-frond-layout title="Balita">
     <div class="site-blocks-cover" style="overflow: hidden;">
         <div class="container" style="margin-top: 150px">
             @if (session('message'))
@@ -40,7 +40,7 @@
                             </td>
                             @if ($active == 1)
                                 <td>
-                                    <a href="" class="badge badge-success"><i
+                                    <a href="{{ route('balita.vitamin', $balita->id) }}" class="badge badge-success"><i
                                             class="fas fa-capsules">Vitamin</i></a>
                                     <a href="{{ route('balita.imunisasi', $balita->id) }}"
                                         class="badge badge-success ml-1"><i class="fas fa-bug">

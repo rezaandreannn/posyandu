@@ -1,10 +1,30 @@
-<x-app-layout>
+<x-app-layout title="antrian-balita-imunisasi">
     @push('css')
         <link href="{{ asset('quixlab/plugins/tables/css/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     @endpush
 
     <div class="row">
-        <div class="col-12">
+        <div class="col-md-4">
+            <form action="" method="get">
+                <div class="input-group">
+                    <select class="custom-select form-control" name="posyandu" id="inputGroupSelect04"
+                        aria-label="Example select with button addon">
+                        @foreach (App\Models\User::POSYANDU as $posyandu)
+                            @if ($posyandu == Request('posyandu'))
+                                <option value="{{ $posyandu }}" selected>{{ $posyandu }}
+                                </option>
+                            @else
+                                <option value="{{ $posyandu }}">{{ $posyandu }}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-primary btn-sm" type="submit">Pilih</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-12 mt-2">
             @if (session('message'))
                 <div class="alert alert-info text-center" role="alert">
                     <span>
@@ -42,8 +62,8 @@
 
                                         <td>{{ $imuniasasi->balita->berat_lahir }} Kg</td>
                                         <td>
-                                            {{-- <x-action href="{{ route('imuniasasi.edit', $imuniasasi->id) }}"
-                                                action="{{ route('imuniasasi.destroy', $imuniasasi->id) }}" /> --}}
+                                            <x-action href="{{ route('imunisasibalita.edit', $imuniasasi->id) }}"
+                                                action="{{ route('imunisasibalita.destroy', $imuniasasi->id) }}" />
                                         </td>
                                     </tr>
                                 @endforeach

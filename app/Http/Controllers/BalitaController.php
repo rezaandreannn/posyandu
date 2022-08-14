@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Balita;
-use App\Models\Imunisasibalita;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use App\Models\Vitaminbalita;
+use App\Models\Imunisasibalita;
 use Illuminate\Support\Facades\Auth;
 
 class BalitaController extends Controller
@@ -160,8 +161,27 @@ class BalitaController extends Controller
 
         Imunisasibalita::create([
             'balita_id' => $id,
+            'posyandu' => Auth::user()->posyandu
         ]);
 
         return redirect()->route('balita.index')->with('message', 'berhasil menambahkan antrian imuniasi ke antrian');
+    }
+    public function vitaminBalita($id)
+    {
+        $vitamin = Vitaminbalita::where('balita_id', $id)
+            ->where('status', 'antri')
+            ->whereDate('created_at', '=', today())
+            ->first();
+
+        if ($vitamin) {
+            return redirect()->back()->with('message', 'anda sudah melakukan pendaftaran');
+        }
+
+        Vitaminbalita::create([
+            'balita_id' => $id,
+            'posyandu' => Auth::user()->posyandu
+        ]);
+
+        return redirect()->route('balita.index')->with('message', 'berhasil menambahkan antrian vitamin');
     }
 }

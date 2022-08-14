@@ -27,8 +27,8 @@
                     <i class="icon-note menu-icon"></i><span class="nav-text">vitamin</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="">Semua</a></li>
-                    <li><a href="">Mengantri</a></li>
+                    <li><a href="{{ route('vitaminbalita.index') }}">Semua</a></li>
+                    <li><a href="{{ route('vitaminbalita.antri') }}">Mengantri</a></li>
                 </ul>
             </li>
             <li>

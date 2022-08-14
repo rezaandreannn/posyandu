@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Imunisasibalita;
+use App\Models\Vitaminbalita;
 use Illuminate\Http\Request;
 
-class ImunisasibalitaController extends Controller
+class VitaminbalitaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,24 +16,23 @@ class ImunisasibalitaController extends Controller
     {
         $posyandu = $request->posyandu ?? 'Posyandu Mawar';
 
-        $imunisasiBalita = Imunisasibalita::where('status', 'sukses')
+        $vitaminBalita = Vitaminbalita::where('status', 'sukses')
             ->where('posyandu', $posyandu)
             ->orderBy('updated_at', 'desc')
             ->get();
 
-        return view('balita.imunisasi.index', compact('imunisasiBalita'));
+        return view('balita.vitamin.index', compact('vitaminBalita'));
     }
 
     public function antri(Request $request)
     {
-
         $posyandu = $request->posyandu ?? 'Posyandu Mawar';
 
-        $imunisasiBalita = Imunisasibalita::where('status', 'antri')
+        $vitaminBalita = Vitaminbalita::where('status', 'antri')
             ->where('posyandu', $posyandu)
             ->get();
 
-        return view('balita.imunisasi.antri', compact('imunisasiBalita'));
+        return view('balita.vitamin.antri', compact('vitaminBalita'));
     }
 
     /**
@@ -43,7 +42,7 @@ class ImunisasibalitaController extends Controller
      */
     public function create()
     {
-        // return view('frond.imunisasi.create');
+        //
     }
 
     /**
@@ -60,10 +59,10 @@ class ImunisasibalitaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Imunisasibalita  $imunisasibalita
+     * @param  \App\Models\Vitaminbalita  $vitaminbalita
      * @return \Illuminate\Http\Response
      */
-    public function show(Imunisasibalita $imunisasibalita)
+    public function show(Vitaminbalita $vitaminbalita)
     {
         //
     }
@@ -71,46 +70,43 @@ class ImunisasibalitaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Imunisasibalita  $imunisasibalita
+     * @param  \App\Models\Vitaminbalita  $vitaminbalita
      * @return \Illuminate\Http\Response
      */
-    public function edit(Imunisasibalita $imunisasibalita)
+    public function edit(Vitaminbalita $vitaminbalita)
     {
-        return view('balita.imunisasi.edit', compact('imunisasibalita'));
+        return view('balita.vitamin.edit', compact('vitaminbalita'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Imunisasibalita  $imunisasibalita
+     * @param  \App\Models\Vitaminbalita  $vitaminbalita
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Imunisasibalita $imunisasibalita)
+    public function update(Request $request, Vitaminbalita $vitaminbalita)
     {
-        $data = $request->validate([
-            'nama' => 'required',
-            'keterangan' => 'required',
-        ]);
+
         $data['status'] = 'sukses';
 
         $data['jenis'] = $request->jenis;
 
-        Imunisasibalita::where('id', $imunisasibalita->id)
+        Vitaminbalita::where('id', $vitaminbalita->id)
             ->update($data);
 
-        return redirect('antri/balita/imunisasi?posyandu=' . $request->posyandu . '');
+        return redirect('antri/balita/vitamin?posyandu=' . $request->posyandu . '')->with('message', 'sukses melakukan pemberian vitamin');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Imunisasibalita  $imunisasibalita
+     * @param  \App\Models\Vitaminbalita  $vitaminbalita
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Imunisasibalita $imunisasibalita)
+    public function destroy(Vitaminbalita $vitaminbalita)
     {
-        Imunisasibalita::where('id', $imunisasibalita->id)
+        Vitaminbalita::where('id', $vitaminbalita->id)
             ->delete();
 
         return redirect()->back()->with('message', 'Berhasil menghapus data');
