@@ -6,6 +6,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\VitaminbalitaController;
 use App\Http\Controllers\ImunisasibalitaController;
+use App\Http\Controllers\PenimbanganbalitaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,7 @@ Route::middleware('auth', 'ceklogin:user,admin')->group(function () {
     Route::delete('balita/{balita}', [BalitaController::class, 'destroy'])->name('balita.destroy');
     Route::get('imunisasi/balita/{id}', [BalitaController::class, 'imunisasiBalita'])->name('balita.imunisasi');
     Route::get('vitamin/balita/{id}', [BalitaController::class, 'vitaminBalita'])->name('balita.vitamin');
+    Route::get('penimbangan/balita/{id}', [BalitaController::class, 'penimbanganBalita'])->name('balita.penimbangan');
 
     // imunisasi balita
     Route::Resource('imunisasibalita', 'App\Http\Controllers\ImunisasibalitaController')->except(['destroy', 'edit', 'update']);
@@ -52,6 +54,13 @@ Route::middleware('auth', 'ceklogin:user,admin')->group(function () {
     Route::get('vitaminbalita/{vitaminbalita}/edit', [VitaminbalitaController::class, 'edit'])->name('vitaminbalita.edit');
     Route::patch('vitaminbalita/{vitaminbalita}', [VitaminbalitaController::class, 'update'])->name('vitaminbalita.update');
     Route::delete('vitaminbalita/{vitaminbalita}', [VitaminbalitaController::class, 'destroy'])->name('vitaminbalita.destroy');
+
+    // penimbangan balita
+    Route::Resource('penimbanganbalita', 'App\Http\Controllers\penimbanganbalitaController')->except(['destroy', 'edit', 'update']);
+    Route::get('antri/balita/penimbangan', [PenimbanganbalitaController::class, 'antri'])->name('penimbanganbalita.antri');
+    Route::get('penimbanganbalita/{penimbanganbalita}/edit', [PenimbanganbalitaController::class, 'edit'])->name('penimbanganbalita.edit');
+    Route::patch('penimbanganbalita/{penimbanganbalita}', [PenimbanganbalitaController::class, 'update'])->name('penimbanganbalita.update');
+    Route::delete('penimbanganbalita/{penimbanganbalita}', [PenimbanganbalitaController::class, 'destroy'])->name('penimbanganbalita.destroy');
 });
 
 // Route::get('/dashboard', function () {

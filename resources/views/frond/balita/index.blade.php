@@ -45,8 +45,8 @@
                                     <a href="{{ route('balita.imunisasi', $balita->id) }}"
                                         class="badge badge-success ml-1"><i class="fas fa-bug">
                                             Imuniasi</i></a>
-                                    <a href="" class="badge badge-success ml-1"><i
-                                            class="fas fa-balance-scale-left">
+                                    <a href="{{ route('balita.penimbangan', $balita->id) }}"
+                                        class="badge badge-success ml-1"><i class="fas fa-balance-scale-left">
                                             Penimbangan</i></a>
                                 </td>
                             @endif
@@ -139,13 +139,15 @@
                     </div>
                     @if ($active == 1)
                         <div class="modal-footer">
-                            <a href="http://" class="badge badge-success border-0"><i class="fas fa-capsules"></i>
-                                Imunisasi</a>
-                            <a href="http://" class="badge badge-success border-0"><i
-                                    class="fas fa-balance-scale-left"></i>
-                                Penimbangan</a>
-                            <a href="http://" class="badge badge-success border-0"><i class="fas fa-capsules"></i>
+                            <a href="{{ route('balita.vitamin', $balita->id) }}"
+                                class="badge badge-success border-0"><i class="fas fa-capsules"></i>
                                 Vitamin</a>
+                            <a href="{{ route('balita.imunisasi', $balita->id) }}"
+                                class="badge badge-success border-0"><i class="fas fa-capsules"></i>
+                                Imunisasi</a>
+                            <a href="{{ route('balita.penimbangan', $balita->id) }}"
+                                class="badge badge-success border-0"><i class="fas fa-balance-scale-left"></i>
+                                Penimbangan</a>
                         </div>
                     @endif
                 </div>

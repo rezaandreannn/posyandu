@@ -23,7 +23,6 @@
                                     <div class="input-group">
                                         <select class="custom-select form-control" name="posyandu"
                                             id="inputGroupSelect04" aria-label="Example select with button addon">
-                                            {{-- <option value="" selected>Pilih posyandu</option> --}}
                                             @foreach (App\Models\User::POSYANDU as $posyandu)
                                                 @if ($posyandu == Request('posyandu'))
                                                     <option value="{{ $posyandu }}" selected>{{ $posyandu }}

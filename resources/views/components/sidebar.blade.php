@@ -36,8 +36,8 @@
                     <i class="icon-note menu-icon"></i><span class="nav-text">Penimbangan</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="">Semua</a></li>
-                    <li><a href="">Mengantri</a></li>
+                    <li><a href="{{ route('penimbanganbalita.index') }}">Semua</a></li>
+                    <li><a href="{{ route('penimbanganbalita.antri') }}">Mengantri</a></li>
                 </ul>
             </li>
             <li class="nav-label">Bumil</li>

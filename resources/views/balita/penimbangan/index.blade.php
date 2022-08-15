@@ -1,4 +1,4 @@
-<x-app-layout title="vitamin-balita">
+<x-app-layout title="penimbangan-balita">
     @push('css')
         <link href="{{ asset('quixlab/plugins/tables/css/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     @endpush
@@ -36,7 +36,7 @@
                 <div class="card-body">
                     <h4 class="card-title">
                         <div class="row">
-                            <h4>Imuniasi Balita : {{ Request('posyandu') }}</h4>
+                            <h4>Penimbangan Balita : {{ Request('posyandu') }}</h4>
                         </div>
                     </h4>
                     <div class="table-responsive">
@@ -45,21 +45,23 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama balita</th>
-                                    <th>Jenis vitamin</th>
+                                    <th>Berat badan</th>
+                                    <th>Tinggi badan</th>
                                     <th>Tanggal</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($vitaminBalita as $vitamin)
+                                @foreach ($penimbanganBalita as $penimbangan)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $vitamin->balita->nama }}</td>
-                                        <td>{{ $vitamin->jenis }}</td>
-                                        <td>{{ $vitamin->updated_at->Format('d/m/Y') }}</td>
+                                        <td>{{ $penimbangan->balita->nama }}</td>
+                                        <td>{{ $penimbangan->berat_badan }} Kg</td>
+                                        <td>{{ $penimbangan->tinggi_badan }} Cm</td>
+                                        <td>{{ $penimbangan->updated_at->Format('d/m/Y') }}</td>
                                         <td>
-                                            <x-action href="{{ route('vitaminbalita.edit', $vitamin->id) }}"
-                                                action="{{ route('vitaminbalita.destroy', $vitamin->id) }}" />
+                                            <x-action href="{{ route('penimbanganbalita.edit', $penimbangan->id) }}"
+                                                action="{{ route('penimbanganbalita.destroy', $penimbangan->id) }}" />
                                         </td>
                                     </tr>
                                 @endforeach

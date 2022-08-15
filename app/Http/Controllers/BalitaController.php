@@ -9,6 +9,7 @@ use App\Models\Setting;
 use Illuminate\Http\Request;
 use App\Models\Vitaminbalita;
 use App\Models\Imunisasibalita;
+use App\Models\Penimbanganbalita;
 use Illuminate\Support\Facades\Auth;
 
 class BalitaController extends Controller
@@ -166,6 +167,7 @@ class BalitaController extends Controller
 
         return redirect()->route('balita.index')->with('message', 'berhasil menambahkan antrian imuniasi ke antrian');
     }
+
     public function vitaminBalita($id)
     {
         $vitamin = Vitaminbalita::where('balita_id', $id)
@@ -178,6 +180,26 @@ class BalitaController extends Controller
         }
 
         Vitaminbalita::create([
+            'balita_id' => $id,
+            'posyandu' => Auth::user()->posyandu
+        ]);
+
+        return redirect()->route('balita.index')->with('message', 'berhasil menambahkan antrian vitamin');
+    }
+
+
+    public function PenimbanganBalita($id)
+    {
+        $penimbangan = Penimbanganbalita::where('balita_id', $id)
+            ->where('status', 'antri')
+            ->whereDate('created_at', '=', today())
+            ->first();
+
+        if ($penimbangan) {
+            return redirect()->back()->with('message', 'anda sudah melakukan pendaftaran');
+        }
+
+        Penimbanganbalita::create([
             'balita_id' => $id,
             'posyandu' => Auth::user()->posyandu
         ]);
