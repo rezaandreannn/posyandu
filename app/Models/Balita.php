@@ -15,6 +15,8 @@ class Balita extends Model
 
     protected $guarded = ['id'];
 
+    // protected $with = ['balitapenimbangans'];
+
     public function balitaimunisasis()
     {
         return $this->hasMany(Imunisasibalita::class);

@@ -3,31 +3,29 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-use App\Models\User;
-use App\Models\Balita;
+use App\Models\Bumil;
 use App\Models\Setting;
+use App\Models\Vitaminbumil;
 use Illuminate\Http\Request;
-use App\Models\Vitaminbalita;
-use App\Models\Imunisasibalita;
-use App\Models\Penimbanganbalita;
+use App\Models\Imunisasibumil;
+use App\Models\Penimbanganbumil;
 use Illuminate\Support\Facades\Auth;
 
-class BalitaController extends Controller
+class BumilController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-
         if (Auth::user()->role_id == 1) {
         }
 
 
         // dd(Balita::with(['balitaimunisasis', 'balitavitamins'])->get());
-        $balitas = Balita::where('user_id', Auth::user()->id)
+        $bumils = Bumil::where('user_id', Auth::user()->id)
             ->get();
 
         $setting = Setting::find(1);
@@ -51,7 +49,9 @@ class BalitaController extends Controller
         }
 
 
-        return view('frond.balita.index', compact('balitas', 'active'));
+
+
+        return view('frond.bumil.index', compact('bumils', 'active'));
     }
 
     /**
@@ -61,7 +61,7 @@ class BalitaController extends Controller
      */
     public function create()
     {
-        return view('frond.balita.tambah');
+        return view('frond.bumil.tambah');
     }
 
     /**
@@ -73,93 +73,84 @@ class BalitaController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'nama' => 'required',
             'nama_ibu' => 'required',
-            'nama_ayah' => 'required',
+            'nama_suami' => 'required',
             'tgl_lahir' => 'required',
-            'berat_lahir' => 'required',
-            'jenis_kelamin' => 'required',
-            'alamat' => 'required',
+            'tgl_kehamilan' => 'required',
+            'alamat' => 'required'
         ]);
 
         $data['user_id'] = Auth::user()->id;
-        Balita::create($data);
 
-        return redirect()->route('balita.index')->with('message', 'Berhasil menambhkan data balita ');
+        Bumil::create($data);
+
+        return redirect('/bumil')->with('message', 'Berhasil menambhkan data ibu hamil');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Balita  $balita
+     * @param  \App\Models\Bumil  $bumil
      * @return \Illuminate\Http\Response
      */
-    public function show(Balita $balita)
+    public function show(Bumil $bumil)
     {
-        $balita = Balita::with('balitapenimbangans')
-            ->where('id', $balita->id)
-            ->first();
-
-        $kms = $balita->balitapenimbangans;
-
-        return view('frond.balita.kms', compact('kms', 'balita'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Balita  $balita
+     * @param  \App\Models\Bumil  $bumil
      * @return \Illuminate\Http\Response
      */
-    public function edit(Balita $balita)
+    public function edit(Bumil $bumil)
     {
-        return view('frond.balita.edit', compact('balita'));
+        return view('frond.bumil.edit', compact('bumil'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Balita  $balita
+     * @param  \App\Models\Bumil  $bumil
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Balita $balita)
+    public function update(Request $request, Bumil $bumil)
     {
-
         $data = $request->validate([
-            'nama' => 'required',
             'nama_ibu' => 'required',
-            'nama_ayah' => 'required',
+            'nama_suami' => 'required',
             'tgl_lahir' => 'required',
-            'berat_lahir' => 'required',
-            'jenis_kelamin' => 'required',
-            'alamat' => 'required',
+            'tgl_kehamilan' => 'required',
+            'alamat' => 'required'
         ]);
 
-        $data['user_id'] = Auth::user()->id;
-        Balita::where('id', $balita->id)
+        // $data['user_id'] = Auth::user()->id;
+
+        Bumil::where('id', $bumil->id)
             ->update($data);
 
-        return redirect()->route('balita.index')->with('message', 'Berhasil mengubah data balita ');
+        return redirect('/bumil')->with('message', 'Berhasil mengubah data ibu hamil');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Balita  $balita
+     * @param  \App\Models\Bumil  $bumil
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Balita $balita)
+    public function destroy(Bumil $bumil)
     {
-
-        Balita::where('id', $balita->id)
+        Bumil::where('id', $bumil->id)
             ->delete();
-        return redirect('/balita')->with('message', 'berhasil menghapus data balita ');
+
+        return redirect('/bumil')->with('message', 'Berhasil menghapus data ibu hamil');
     }
 
-    public function imunisasiBalita($id)
+    public function imunisasiBumil($id)
     {
-        $imunisasi = Imunisasibalita::where('balita_id', $id)
+        $imunisasi = Imunisasibumil::where('bumil_id', $id)
             ->where('status', 'antri')
             ->whereDate('created_at', '=', today())
             ->first();
@@ -168,17 +159,17 @@ class BalitaController extends Controller
             return redirect()->back()->with('message', 'anda sudah melakukan pendaftaran');
         }
 
-        Imunisasibalita::create([
-            'balita_id' => $id,
+        Imunisasibumil::create([
+            'bumil_id' => $id,
             'posyandu' => Auth::user()->posyandu
         ]);
 
-        return redirect()->route('balita.index')->with('message', 'berhasil menambahkan antrian imuniasi ke antrian');
+        return redirect()->route('bumil.index')->with('message', 'berhasil menambahkan antrian imuniasi ke antrian');
     }
 
-    public function vitaminBalita($id)
+    public function vitaminBumil($id)
     {
-        $vitamin = Vitaminbalita::where('balita_id', $id)
+        $vitamin = Vitaminbumil::where('bumil_id', $id)
             ->where('status', 'antri')
             ->whereDate('created_at', '=', today())
             ->first();
@@ -187,18 +178,17 @@ class BalitaController extends Controller
             return redirect()->back()->with('message', 'anda sudah melakukan pendaftaran');
         }
 
-        Vitaminbalita::create([
-            'balita_id' => $id,
+        Vitaminbumil::create([
+            'bumil_id' => $id,
             'posyandu' => Auth::user()->posyandu
         ]);
 
-        return redirect()->route('balita.index')->with('message', 'berhasil menambahkan antrian vitamin');
+        return redirect()->route('bumil.index')->with('message', 'berhasil menambahkan antrian vitamin');
     }
 
-
-    public function PenimbanganBalita($id)
+    public function PenimbanganBumil($id)
     {
-        $penimbangan = Penimbanganbalita::where('balita_id', $id)
+        $penimbangan = Penimbanganbumil::where('bumil_id', $id)
             ->where('status', 'antri')
             ->whereDate('created_at', '=', today())
             ->first();
@@ -207,11 +197,11 @@ class BalitaController extends Controller
             return redirect()->back()->with('message', 'anda sudah melakukan pendaftaran');
         }
 
-        Penimbanganbalita::create([
-            'balita_id' => $id,
+        Penimbanganbumil::create([
+            'bumil_id' => $id,
             'posyandu' => Auth::user()->posyandu
         ]);
 
-        return redirect()->route('balita.index')->with('message', 'berhasil menambahkan antrian vitamin');
+        return redirect()->route('bumil.index')->with('message', 'berhasil menambahkan antrian Penimbangan');
     }
 }

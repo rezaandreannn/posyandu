@@ -1,4 +1,4 @@
-<x-frond-layout title="Balita">
+<x-frond-layout title="Bumil">
     <div class="site-blocks-cover" style="overflow: hidden;">
         <div class="container" style="margin-top: 150px">
             @if (session('message'))
@@ -9,54 +9,52 @@
                 </div>
             @endif
 
-            <a href="{{ route('balita.create') }}" class="btn rounded-0 btn-sm text-white"
-                style="background-color: cadetblue" class="text-white">Tambah</a>
+            <a href="{{ route('bumil.create') }}" class="btn rounded-0 btn-sm text-white"
+                style="background-color: rgb(116, 205, 221)" class="text-white">Tambah</a>
             <table class="table mt-2 ">
-                <thead style="background-color: cadetblue" class="text-white">
+                <thead style="background-color: rgb(116, 205, 221)" class="text-white">
                     <tr>
                         <th scope="col">No</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Jenis kelamin</th>
+                        <th scope="col">Nama ibu</th>
+                        <th scope="col">Nama suami</th>
                         <th scope="col">Umur</th>
-                        <th scope="col">Detail</th>
+                        <th scope="col">Umur Kehamilan</th>
                         @if ($active == 1)
                             <th scope="col">Daftar</th>
                         @endif
-                        <th>Kms</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($balitas as $balita)
+                    @forelse ($bumils as $bumil)
                         <tr>
                             <td scope="row">{{ $loop->iteration }}</td>
-                            <td>{{ $balita->nama }}</td>
-                            <td>{{ $balita->jenis_kelamin }}</td>
-                            <td>{{ Carbon\Carbon::parse($balita->tgl_lahir)->diff(\Carbon\Carbon::now())->format('%y thn, %m bln and %d hari') }}
-                            <td style="max-width: 200px">
-                                <button type="button" class="badge badge-primary border-0" data-toggle="modal"
-                                    data-target="#exampleModal{{ $balita->id }}">
-                                    Detail
-                                </button>
+                            <td>{{ $bumil->nama_ibu }}</td>
+                            <td>{{ $bumil->nama_suami }}</td>
+                            <td>{{ Carbon\Carbon::parse($bumil->tgl_lahir)->diff(\Carbon\Carbon::now())->format('%y thn') }}
+                            <td>
+                                {{ Carbon\Carbon::parse($bumil->tgl_kehamilan)->diffInWeeks(\Carbon\Carbon::now()) }}
+                                Minggu
                             </td>
+
                             @if ($active == 1)
                                 <td>
-                                    <a href="{{ route('balita.vitamin', $balita->id) }}" class="badge badge-success"><i
+                                    <a href="{{ route('bumil.vitamin', $bumil->id) }}" class="badge badge-success"><i
                                             class="fas fa-capsules">Vitamin</i></a>
-                                    <a href="{{ route('balita.imunisasi', $balita->id) }}"
+                                    <a href="{{ route('bumil.imunisasi', $bumil->id) }}"
                                         class="badge badge-success ml-1"><i class="fas fa-bug">
                                             Imuniasi</i></a>
-                                    <a href="{{ route('balita.penimbangan', $balita->id) }}"
+                                    <a href="{{ route('bumil.penimbangan', $bumil->id) }}"
                                         class="badge badge-success ml-1"><i class="fas fa-balance-scale-left">
                                             Penimbangan</i></a>
                                 </td>
                             @endif
-                            <td><a href="{{ route('balita.show', $balita->id) }}" class="badge badge-warning">Kms</a>
+                            {{-- <td><a href="{{ route('bumil.show', $bumil->id) }}" class="badge badge-warning">Kms</a> --}}
                             </td>
                             <td>
-                                <a href="{{ route('balita.edit', $balita->id) }}"
+                                <a href="{{ route('bumil.edit', $bumil->id) }}"
                                     class="badge badge-secondary text-white"><i class="far fa-edit"></i></a>
-                                <form action="{{ route('balita.destroy', $balita->id) }}" method="post"
+                                <form action="{{ route('bumil.destroy', $bumil->id) }}" method="post"
                                     class="d-inline">
                                     @method('DELETE')
                                     @csrf
@@ -77,7 +75,7 @@
         </div>
     </div>
 
-    @foreach ($balitas as $balita)
+    {{-- @foreach ($balitas as $balita)
         <div class="modal fade" id="exampleModal{{ $balita->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
@@ -156,5 +154,5 @@
                 </div>
             </div>
         </div>
-    @endforeach
+    @endforeach --}}
 </x-frond-layout>

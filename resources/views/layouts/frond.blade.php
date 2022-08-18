@@ -74,7 +74,9 @@
                                 <li><a href="#features-section" class="nav-link">Fitur</a></li>
                                 <li><a href="{{ route('balita.index') }}"
                                         class="nav-link {{ Request::is('balita*') ? 'active' : '' }}">Balita</a></li>
-                                <li><a href="" class="nav-link">Ibu Hamil</a></li>
+                                <li><a href="{{ route('bumil.index') }}"
+                                        class="nav-link {{ Request::is('bumil*') ? 'active' : '' }}">Ibu
+                                        Hamil</a></li>
 
                                 @auth
                                     <li class="has-children">
