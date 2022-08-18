@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\Vitaminbalita;
 use App\Models\Imunisasibalita;
 use App\Models\Penimbanganbalita;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class BalitaController extends Controller
@@ -23,6 +24,13 @@ class BalitaController extends Controller
     {
 
         if (Auth::user()->role_id == 1) {
+            $posyandu = $request->posyandu ?? 'Posyandu Mawar';
+            $balitas =  DB::table('balitas')
+                ->join('users', 'users.id', '=', 'balitas.user_id')
+                ->select('balitas.*', 'users.name', 'users.posyandu')
+                ->where('users.posyandu', $posyandu)
+                ->get();
+            return view('balita.index', compact('balitas'));
         }
 
 
@@ -212,6 +220,6 @@ class BalitaController extends Controller
             'posyandu' => Auth::user()->posyandu
         ]);
 
-        return redirect()->route('balita.index')->with('message', 'berhasil menambahkan antrian vitamin');
+        return redirect()->back()->with('message', 'berhasil menambahkan antrian vitamin');
     }
 }

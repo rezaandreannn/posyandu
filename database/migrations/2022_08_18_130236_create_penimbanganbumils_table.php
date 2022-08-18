@@ -17,8 +17,11 @@ class CreatePenimbanganbumilsTable extends Migration
             $table->id();
             $table->foreignId('bumil_id');
             $table->string('berat_badan')->nullable();
-            $table->string('status')->default('antri');
+            $table->string('tinggi_badan')->nullable();
+            $table->string('lila')->nullable();
+            $table->string('diagnosa')->nullable();
             $table->longText('keterangan')->nullable();
+            $table->string('status')->default('antri');
             $table->string('posyandu');
             $table->timestamps();
         });

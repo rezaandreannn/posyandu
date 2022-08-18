@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use App\Models\Vitaminbumil;
 use App\Models\Imunisasibumil;
 use App\Models\Penimbanganbumil;
@@ -13,6 +14,13 @@ class Bumil extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    protected $with = 'user';
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function bumilimunisasis()
     {

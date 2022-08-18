@@ -89,9 +89,13 @@ class PenimbanganbumilController extends Controller
     {
         $data = $request->validate([
             'berat_badan' => 'required',
+            'tinggi_badan' => 'required',
+            'lila' => 'required',
+            'diagnosa' => 'required',
         ]);
 
         $data['status'] = 'sukses';
+        $data['keterangan'] = $request->keterangan;
 
         Penimbanganbumil::where('id', $penimbanganbumil->id)
             ->update($data);

@@ -9,7 +9,7 @@
             </li>
             <li class="nav-label">Balita</li>
             <li>
-                <a href="widgets.html" aria-expanded="false">
+                <a href="{{ route('balita.index') }}" aria-expanded="false">
                     <i class="fas fa-baby"></i><span class="nav-text">Data Balita</span>
                 </a>
             </li>
@@ -42,7 +42,7 @@
             </li>
             <li class="nav-label">Bumil</li>
             <li>
-                <a href="widgets.html" aria-expanded="false">
+                <a href="{{ route('bumil.index') }}" aria-expanded="false">
                     <i class="fas fa-female"></i><span class="nav-text">Data Bumil</span>
                 </a>
             </li>

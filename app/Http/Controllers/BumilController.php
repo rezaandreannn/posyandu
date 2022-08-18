@@ -9,6 +9,7 @@ use App\Models\Vitaminbumil;
 use Illuminate\Http\Request;
 use App\Models\Imunisasibumil;
 use App\Models\Penimbanganbumil;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class BumilController extends Controller
@@ -18,9 +19,16 @@ class BumilController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if (Auth::user()->role_id == 1) {
+            $posyandu = $request->posyandu ?? 'Posyandu Mawar';
+            $bumils =  DB::table('bumils')
+                ->join('users', 'users.id', '=', 'bumils.user_id')
+                ->select('bumils.*', 'users.name', 'users.posyandu')
+                ->where('users.posyandu', $posyandu)
+                ->get();
+            return view('bumil.index', compact('bumils'));
         }
 
 
@@ -202,6 +210,6 @@ class BumilController extends Controller
             'posyandu' => Auth::user()->posyandu
         ]);
 
-        return redirect()->route('bumil.index')->with('message', 'berhasil menambahkan antrian Penimbangan');
+        return redirect()->back()->with('message', 'berhasil menambahkan antrian Penimbangan');
     }
 }

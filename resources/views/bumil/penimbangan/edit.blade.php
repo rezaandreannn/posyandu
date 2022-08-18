@@ -58,6 +58,45 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="tinggi_badan">Tinggi badan<span
+                                        class="text-danger"></span>
+                                </label>
+                                <div class="col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="150"
+                                            aria-describedby="tinggi_badan" name="tinggi_badan">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button" id="tinggi_badan"
+                                                disabled>Cm</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="lila">Lila<span
+                                        class="text-danger"></span>
+                                </label>
+                                <div class="col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="60"
+                                            aria-describedby="lila" name="lila">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button" id="lila"
+                                                disabled>Cm</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="diagnosa">Diagnosa<span
+                                        class="text-danger"></span>
+                                </label>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" placeholder="60" name="diagnosa"
+                                        id="diagnosa">
+                                </div>
+                            </div>
 
                             <div class="form-group row">
                                 <label class="col-lg-4 col-form-label" for="keterangan">Keterangan<span
