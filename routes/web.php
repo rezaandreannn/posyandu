@@ -11,6 +11,8 @@ use App\Http\Controllers\ImunisasibumilController;
 use App\Http\Controllers\ImunisasibalitaController;
 use App\Http\Controllers\PenimbanganbumilController;
 use App\Http\Controllers\PenimbanganbalitaController;
+use App\Http\Controllers\ProfileController;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +37,9 @@ Route::middleware('auth', 'ceklogin:admin')->group(function () {
 });
 
 Route::middleware('auth', 'ceklogin:user,admin')->group(function () {
+    // profile
+    Route::get('/profile', ProfileController::class)->name('profile');
+    // dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
     // balita
     Route::Resource('balita', 'App\Http\Controllers\BalitaController')->except(['destroy', 'show', 'edit', 'update']);

@@ -86,7 +86,7 @@
                                         </a>
                                         <ul class="dropdown arrow-top">
 
-                                            <li><a href="#our-team-section" class="nav-link">Profil</a></li>
+                                            <li><a href="{{ route('profile') }}" class="nav-link">Profil</a></li>
                                             <hr class="my-2">
                                             <form action="{{ route('logout') }}" method="POST" class="d-inline">
                                                 @csrf

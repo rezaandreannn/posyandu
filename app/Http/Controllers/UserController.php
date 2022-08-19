@@ -78,7 +78,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('user.edit', compact('user'));
     }
 
     /**
@@ -90,7 +91,22 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $data = $request->validate([
+            'name' => 'required',
+            'role_id' => 'required',
+            'email' => 'required',
+            'nik' => 'required|numeric',
+            'posyandu' => 'required',
+        ]);
+
+        if ($request->password != null) {
+            $data['password'] = bcrypt($request->password);
+        }
+
+        User::where('id', $id)->update($data);
+
+        return redirect('user?posyandu=' . $request->posyandu . '')->with('message', 'Berhasil mengubah data user');
     }
 
     /**
@@ -101,6 +117,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::where('id', $id)
+            ->delete();
+
+        return redirect()->back()->with('message', 'Berhasil menghapus data user');
     }
 }

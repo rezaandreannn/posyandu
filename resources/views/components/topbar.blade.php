@@ -13,14 +13,14 @@
                 <li class="icons dropdown">
                     <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                         <span class="activity active"></span>
-                        <img src="{{ asset('quixlab/images/user/1.png') }}" height="40" width="40"
+                        <img src="{{ asset('quixlab/images/user/form-user.png') }}" height="40" width="40"
                             alt="">
                     </div>
-                    <div class="drop-down dropdown-profile   dropdown-menu">
+                    <div class="drop-down dropdown-profile dropdown-menu">
                         <div class="dropdown-content-body">
                             <ul>
                                 <li>
-                                    <a href="app-profile.html"><i class="icon-user"></i>
+                                    <a href="{{ route('profile') }}"><i class="icon-user"></i>
                                         <span>Profile</span></a>
                                 </li>
                                 <hr class="my-2">
