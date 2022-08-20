@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('frond/fonts/icomoon/style.css') }}">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
         integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -18,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('frond/css/jquery-ui.css') }}">
     <link rel="stylesheet" href="{{ asset('frond/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frond/css/owl.theme.default.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frond/') }}css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="{{ asset('frond/css/owl.theme.default.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('frond/css/jquery.fancybox.min.css') }}">
 
@@ -173,6 +175,8 @@
 
 
     <script src="{{ asset('frond/js/main.js') }}"></script>
+
+    @stack('js')
 
 </body>
 

@@ -9,41 +9,69 @@
                 </div>
             @endif
 
-            {{-- <div class="row">
-                <div class="col-md-4">Nama</div>
-                <div class="col-md-4">{{ $balita->nama }}</div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">Nama</div>
-                <div class="col-md-4">{{ $balita->nama_ibu }}</div>
-            </div> --}}
 
-            {{-- <a href="{{ route('balita.create') }}" class="btn rounded-0 btn-sm text-white"
-                style="background-color: cadetblue" class="text-white">Tambah</a> --}}
-            <table class="table mt-2 ">
-                <thead style="background-color: rgb(118, 132, 133)" class="text-white">
-                    <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Tanggal</th>
-                        <th scope="col">Berat badan</th>
-                        <th scope="col">Keterangan</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($kms as $kms)
-                        <tr>
-                            <td scope="row">{{ $loop->iteration }}</td>
-                            <td>{{ $kms->updated_at }}</td>
-                            <td>{{ $kms->berat_badan }}</td>
-                            <td>{{ $kms->keterangan }}</td>
-                            {{-- <td>{{ $balita->jenis_kelamin }}</td> --}}
-                            {{-- <td>{{ Carbon\Carbon::parse($balita->tgl_lahir)->diff(\Carbon\Carbon::now())->format('%y thn, %m bln and %d hari') }} --}}
-                        @empty
-                    @endforelse
-                </tbody>
-            </table>
+            Nama Balita : {{ $balita->nama }}
+
+
+
+            <div class="row mt-2">
+                <div class="col">
+                    <div class="card">
+                        <canvas id="myChart" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </div>
 
+    @push('js')
+        <script>
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        @foreach ($kms as $label)
+                            '{{ $label->updated_at->Format('d/m/Y') }}',
+                        @endforeach
+                    ],
+                    datasets: [{
+                        label: 'Berat Badan',
+                        data: [
+                            @foreach ($kms as $label)
+                                '{{ $label->berat_badan }}',
+                            @endforeach
+                        ],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+    @endpush
 
 </x-frond-layout>
