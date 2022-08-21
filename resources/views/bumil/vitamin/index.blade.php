@@ -24,6 +24,9 @@
                 </div>
             </form>
         </div>
+        <div class="col-md-8 d-flex justify-content-end">
+            <a href="{{ route('vitaminbumil.create') }}" target="blank" class="btn btn-primary">Cetak</a>
+        </div>
         <div class="col-12 mt-1">
             @if (session('message'))
                 <div class="alert alert-info text-center" role="alert">
@@ -45,6 +48,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Ibu</th>
+                                    <th>Nama Suami</th>
                                     <th>Jenis vitamin</th>
                                     <th>Tanggal</th>
                                     <th>Aksi</th>
@@ -55,6 +59,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $vitamin->bumil->nama_ibu }}</td>
+                                        <td>{{ $vitamin->bumil->nama_suami }}</td>
                                         <td>{{ $vitamin->jenis }}</td>
                                         <td>{{ $vitamin->updated_at->Format('d/m/Y') }}</td>
                                         <td>

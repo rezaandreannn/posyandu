@@ -9,6 +9,7 @@ use App\Http\Controllers\VitaminbumilController;
 use App\Http\Controllers\VitaminbalitaController;
 use App\Http\Controllers\ImunisasibumilController;
 use App\Http\Controllers\ImunisasibalitaController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PenimbanganbumilController;
 use App\Http\Controllers\PenimbanganbalitaController;
 use App\Http\Controllers\ProfileController;
@@ -29,11 +30,14 @@ Route::get('/', function () {
     return view('frond.index');
 });
 
+
+
 Route::middleware('auth', 'ceklogin:admin')->group(function () {
     Route::Resource('role', 'App\Http\Controllers\RoleController');
     Route::Resource('user', 'App\Http\Controllers\UserController');
     Route::get('setting', [SettingController::class, 'edit'])->name('setting.edit');
     Route::patch('setting/{setting}', [SettingController::class, 'update'])->name('setting.update');
+    Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
 });
 
 Route::middleware('auth', 'ceklogin:user,admin')->group(function () {

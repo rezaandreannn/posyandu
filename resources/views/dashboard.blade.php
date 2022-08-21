@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="card border-primary mb-3">
             <div class="card-header">
-                <h5>Data Balita</h5>
+                <h5>Data Balita dan Ibu Hamil</h5>
             </div>
             <div class="card-body text-primary">
                 <div class="row">

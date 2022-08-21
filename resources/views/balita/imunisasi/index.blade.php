@@ -24,6 +24,9 @@
                 </div>
             </form>
         </div>
+        <div class="col-md-8 d-flex justify-content-end">
+            <a href="{{ route('imunisasibalita.create') }}" target="blank" class="btn btn-primary">Cetak</a>
+        </div>
         <div class="col-12 mt-1">
             @if (session('message'))
                 <div class="alert alert-info text-center" role="alert">

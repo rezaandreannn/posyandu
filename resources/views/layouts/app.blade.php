@@ -51,7 +51,8 @@
                     <span class="logo-compact"><img src="{{ asset('quixlab/images/logo-compact.png') }}"
                             alt=""></span>
                     <span class="brand-title">
-                        <img src="{{ asset('quixlab/images/logo-text.png') }}" alt="">
+                        <img src="{{ asset('quixlab/images/posyandu.png') }}" alt="posyandu" width="100px"
+                            height="57px">
                     </span>
                 </a>
             </div>

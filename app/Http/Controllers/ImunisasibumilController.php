@@ -44,7 +44,7 @@ class ImunisasibumilController extends Controller
      */
     public function create()
     {
-        //
+        return view('bumil.imunisasi.input_cetak');
     }
 
     /**
@@ -55,7 +55,34 @@ class ImunisasibumilController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $bulan = $request->input('bulan');
+        $tahun = $request->input('tahun');
+
+        if (!$bulan && !$tahun) {
+            $month = date('m');
+            $year = date('Y');
+        } elseif ($bulan) {
+            $month = $bulan;
+            $year = date('Y');
+        } elseif ($bulan && $tahun) {
+            $month = $bulan;
+            $year = $tahun;
+        } else {
+            $this->validate($request, [
+                'bulan' => 'required',
+            ]);
+        }
+        $posyandu = $request->posyandu ?? 'Posyandu Mawar';
+
+        $imunisasiBumil = Imunisasibumil::where('status', 'sukses')
+            ->where('posyandu', $posyandu)
+            ->orderBy('updated_at', 'asc')
+            ->whereMonth('updated_at', $month)
+            ->whereYear('updated_at', $year)
+            ->get();
+
+        return view('bumil.imunisasi.cetak', compact('imunisasiBumil', 'posyandu', 'tahun', 'bulan'));
     }
 
     /**

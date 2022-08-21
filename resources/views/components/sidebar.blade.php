@@ -7,11 +7,11 @@
                     <i class="fas fa-chart-line"></i><span class="nav-text">Dashboard</span>
                 </a>
             </li>
-            <li>
-                <a href="#" aria-expanded="false">
+            {{-- <li>
+                <a href="/laporan" aria-expanded="false">
                     <i class="fas fa-print"></i><span class="nav-text">Laporan</span>
                 </a>
-            </li>
+            </li> --}}
             <li class="nav-label">Balita</li>
             <li>
                 <a href="{{ route('balita.index') }}" aria-expanded="false">
@@ -45,10 +45,10 @@
                     <li><a href="{{ route('penimbanganbalita.antri') }}">Mengantri</a></li>
                 </ul>
             </li>
-            <li class="nav-label">Bumil</li>
+            <li class="nav-label">Ibu Hamil</li>
             <li>
                 <a href="{{ route('bumil.index') }}" aria-expanded="false">
-                    <i class="fas fa-female"></i><span class="nav-text">Data Bumil</span>
+                    <i class="fas fa-female"></i><span class="nav-text">Data Ibu Hamil</span>
                 </a>
             </li>
             <li>
