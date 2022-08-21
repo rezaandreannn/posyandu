@@ -3,8 +3,13 @@
         <ul class="metismenu" id="menu">
             <li class="nav-label">Menu</li>
             <li>
-                <a href="widgets.html" aria-expanded="false">
+                <a href="/dashboard" aria-expanded="false">
                     <i class="fas fa-chart-line"></i><span class="nav-text">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" aria-expanded="false">
+                    <i class="fas fa-print"></i><span class="nav-text">Laporan</span>
                 </a>
             </li>
             <li class="nav-label">Balita</li>

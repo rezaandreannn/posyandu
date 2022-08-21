@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use App\Models\Vitaminbalita;
 use App\Models\Imunisasibalita;
 use App\Models\Penimbanganbalita;
@@ -16,6 +17,11 @@ class Balita extends Model
     protected $guarded = ['id'];
 
     // protected $with = ['balitapenimbangans'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function balitaimunisasis()
     {
