@@ -220,6 +220,6 @@ class BalitaController extends Controller
             'posyandu' => Auth::user()->posyandu
         ]);
 
-        return redirect()->back()->with('message', 'berhasil menambahkan antrian vitamin');
+        return redirect()->back()->with('message', 'berhasil menambahkan antrian penimbangan');
     }
 }
