@@ -41,7 +41,7 @@
                                 <div class="col-md-2">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="jenis_kelamin"
-                                            id="laki-laki" value="laki-laki">
+                                            id="laki-laki" value="L">
                                         <label class="form-check-label" for="laki-laki">
                                             Laki Laki
                                         </label>
@@ -50,7 +50,7 @@
                                 <div class="col-md-2">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="jenis_kelamin"
-                                            id="perempuan" value="perempuan">
+                                            id="perempuan" value="P">
                                         <label class="form-check-label" for="perempuan">
                                             Perempuan
                                         </label>

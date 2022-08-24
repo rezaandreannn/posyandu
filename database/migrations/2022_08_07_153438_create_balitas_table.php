@@ -19,7 +19,7 @@ class CreateBalitasTable extends Migration
             $table->string('nama');
             $table->date('tgl_lahir');
             $table->string('berat_lahir');
-            $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
+            $table->enum('jenis_kelamin', ['L', 'P']);
             $table->string('nama_ibu');
             $table->string('nama_ayah');
             $table->string('alamat');

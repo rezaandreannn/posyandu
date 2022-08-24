@@ -29,6 +29,9 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 Route::get('/', function () {
     return view('frond.index');
 });
+Route::get('/lap', function () {
+    return view('laporan.cetak');
+});
 
 
 
@@ -38,6 +41,7 @@ Route::middleware('auth', 'ceklogin:admin')->group(function () {
     Route::get('setting', [SettingController::class, 'edit'])->name('setting.edit');
     Route::patch('setting/{setting}', [SettingController::class, 'update'])->name('setting.update');
     Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
+    Route::post('laporan', [LaporanController::class, 'cetak'])->name('laporan.cetak');
 });
 
 Route::middleware('auth', 'ceklogin:user,admin')->group(function () {

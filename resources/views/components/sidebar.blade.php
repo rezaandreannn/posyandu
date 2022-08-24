@@ -7,11 +7,11 @@
                     <i class="fas fa-chart-line"></i><span class="nav-text">Dashboard</span>
                 </a>
             </li>
-            {{-- <li>
-                <a href="/laporan" aria-expanded="false">
+            <li>
+                <a href="{{ route('laporan.index') }}" target="blank" aria-expanded="false">
                     <i class="fas fa-print"></i><span class="nav-text">Laporan</span>
                 </a>
-            </li> --}}
+            </li>
             <li class="nav-label">Balita</li>
             <li>
                 <a href="{{ route('balita.index') }}" aria-expanded="false">

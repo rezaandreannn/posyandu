@@ -42,8 +42,8 @@
                                 <div class="col-md-2">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="jenis_kelamin"
-                                            id="laki-laki" value="laki-laki"
-                                            {{ $balita->jenis_kelamin == 'laki-laki' ? 'checked' : '' }}>
+                                            id="laki-laki" value="L"
+                                            {{ $balita->jenis_kelamin == 'L' ? 'checked' : '' }}>
                                         <label class="form-check-label" for="laki-laki">
                                             Laki Laki
                                         </label>
@@ -52,8 +52,8 @@
                                 <div class="col-md-2">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="jenis_kelamin"
-                                            id="perempuan" value="perempuan"
-                                            {{ $balita->jenis_kelamin == 'perempuan' ? 'checked' : '' }}>
+                                            id="perempuan" value="P"
+                                            {{ $balita->jenis_kelamin == 'P' ? 'checked' : '' }}>
                                         <label class="form-check-label" for="perempuan">
                                             Perempuan
                                         </label>

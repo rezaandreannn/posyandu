@@ -93,8 +93,11 @@
                                         class="text-danger"></span>
                                 </label>
                                 <div class="col-lg-6">
-                                    <input type="text" class="form-control" placeholder="60" name="diagnosa"
-                                        id="diagnosa">
+                                    <select name="diagnosa" class="form-control" id="diagnosa">
+                                        <option value="G1">G1</option>
+                                        <option value="P0">P0</option>
+                                        <option value="A0">A0</option>
+                                    </select>
                                 </div>
                             </div>
 
