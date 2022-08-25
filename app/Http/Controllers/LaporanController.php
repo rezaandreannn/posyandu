@@ -15,49 +15,6 @@ class LaporanController extends Controller
     public function index(Request $request)
     {
 
-
-
-        // $now = Carbon::now();
-        // $b_day = DB::table('balitas')->where(DB::raw('tgl_lahir'), $now);
-        // $umur = DB::table('balitas')->get();
-        // foreach ($umur as $umur) {
-        //     $b_day =  Carbon::parse($umur->tgl_lahir);
-        //     $age = $b_day->diffInMonths($now);
-
-
-        //     // dd($age);
-
-        //     if ($age <= 7) {
-        //         // print_r("umur < 7 tahun :" . $age . "<br>");
-        //         $tujuh =  [$age];
-        //     } elseif ($age > 7 && $age <= 12) {
-        //         // print_r("Umur 7 - 12 tahun : " . $age . "<br>");
-        //         $tujuh = $dari_7_12 = [$age];
-        //     } elseif ($age > 12) {
-        //         print_r("Umur > 12 tahun : " . $age . "<br>");
-        //         // $tot_age = [$age];
-        //     }
-
-        //     // dd($tot_age);
-        //     dd($tujuh);
-        // }
-
-
-
-
-
-        // $totals = DB::table('balitas')
-        //     ->selectRaw('YEAR(tgl_lahir) year, MONTH(tgl_lahir) umur')
-        //     ->selectRaw('count(*) as total')
-        //     ->selectRaw("count(case when jenis_kelamin = 'L' then 1 end) as l")
-        //     ->selectRaw("count(case when jenis_kelamin = 'P' then 1 end) as p")
-        //     ->selectRaw("count(IF(umur < 7,1,NULL)) tujuh")
-        //     // ->selectRaw("count(case when status = 'cancelled' then 1 end) as cancelled")
-        //     // ->selectRaw("count(case when status = 'bounced' then 1 end) as bounced")
-        //     ->get();
-
-        // dd($totals);
-
         return view('laporan.input_cetak');
     }
 
@@ -178,8 +135,6 @@ class LaporanController extends Controller
             ->whereYear('updated_at', $year)
             ->get();
 
-        // di sini dapat berapa jumlah masing-masing rentang umur itu
-        // dd($LjumlahBerdasarkanUsia);
         return view('laporan.cetak', compact('LjumlahBerdasarkanUsia', 'PjumlahBerdasarkanUsia', 'penimbanganBumil', 'imunisasiBalita', 'imunisasiBumil', 'posyandu', 'tahun', 'bulan'));
     }
 }

@@ -118,7 +118,9 @@ class PenimbanganbumilController extends Controller
             'berat_badan' => 'required',
             'tinggi_badan' => 'required',
             'lila' => 'required',
-            'diagnosa' => 'required',
+            'g2' => 'required',
+            'p2' => 'required',
+            'a0' => 'required',
         ]);
 
         $data['status'] = 'sukses';

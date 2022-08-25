@@ -35,14 +35,19 @@
         <table class="table mt-5">
             <thead>
                 <tr>
-                    <th>No</th>
-                    <th>Nama Ibu</th>
-                    <th>Berat badan</th>
-                    <th>Tinggi badan</th>
-                    <th>LILA</th>
-                    <th>Diagnosa</th>
-                    <th>Keterangan</th>
-                    <th>Tanggal</th>
+                    <th rowspan="2">No</th>
+                    <th rowspan="2">Nama Ibu</th>
+                    <th rowspan="2">Berat badan</th>
+                    <th rowspan="2">Tinggi badan</th>
+                    <th rowspan="2">LILA</th>
+                    <th colspan="3" class="text-center">Diagnosa</th>
+                    <th rowspan="2">Keterangan</th>
+                    <th rowspan="2">Tanggal</th>
+                </tr>
+                <tr>
+                    <th>G2</th>
+                    <th>P2</th>
+                    <th>A0</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,7 +58,9 @@
                         <td>{{ $penimbangan->berat_badan }} Kg</td>
                         <td>{{ $penimbangan->tinggi_badan }} Cm</td>
                         <td>{{ $penimbangan->lila }} Cm</td>
-                        <td>{{ $penimbangan->diagnosa }} </td>
+                        <td>{{ $penimbangan->g2 }} </td>
+                        <td>{{ $penimbangan->p2 }} </td>
+                        <td>{{ $penimbangan->a0 }} </td>
                         <td>{{ $penimbangan->keterangan }}</td>
                         <td>{{ $penimbangan->updated_at->Format('d/m/Y') }}</td>
                     </tr>

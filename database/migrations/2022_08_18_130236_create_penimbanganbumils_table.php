@@ -19,11 +19,19 @@ class CreatePenimbanganbumilsTable extends Migration
             $table->string('berat_badan')->nullable();
             $table->string('tinggi_badan')->nullable();
             $table->string('lila')->nullable();
-            $table->string('diagnosa')->nullable();
+            $table->string('g2')->nullable();
+            $table->string('p2')->nullable();
+            $table->string('a0')->nullable();
             $table->longText('keterangan')->nullable();
             $table->string('status')->default('antri');
             $table->string('posyandu');
             $table->timestamps();
+
+            $table->foreign('bumil_id')
+                ->references('id')
+                ->on('bumils')
+                ->onUpdate('restrict')
+                ->onDelete('cascade');
         });
     }
 

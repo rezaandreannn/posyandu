@@ -22,6 +22,12 @@ class CreatePenimbanganbalitasTable extends Migration
             $table->longText('keterangan')->nullable();
             $table->string('posyandu');
             $table->timestamps();
+
+            $table->foreign('balita_id')
+                ->references('id')
+                ->on('balitas')
+                ->onUpdate('restrict')
+                ->onDelete('cascade');
         });
     }
 

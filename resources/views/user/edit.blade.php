@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-lg-4 col-form-label" for="name">Peran <span
+                                <label class="col-lg-4 col-form-label" for="name">Peran<span
                                         class="text-danger">*</span>
                                 </label>
                                 <div class="col-lg-6">

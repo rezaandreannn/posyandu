@@ -48,14 +48,18 @@
                                         class="text-danger"></span>
                                 </label>
                                 <div class="col-lg-6">
-                                    <div class="input-group mb-3">
+                                    <div class="input-group">
                                         <input type="text" class="form-control" placeholder="4.5"
-                                            aria-describedby="berat_badan" name="berat_badan">
+                                            aria-describedby="berat_badan" name="berat_badan"
+                                            value="{{ old('berat_badan', $penimbanganbumil->berat_badan) }}">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button" id="berat_badan"
                                                 disabled>Kg</button>
                                         </div>
                                     </div>
+                                    @error('berat_badan')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -63,14 +67,18 @@
                                         class="text-danger"></span>
                                 </label>
                                 <div class="col-lg-6">
-                                    <div class="input-group mb-3">
+                                    <div class="input-group">
                                         <input type="text" class="form-control" placeholder="150"
-                                            aria-describedby="tinggi_badan" name="tinggi_badan">
+                                            aria-describedby="tinggi_badan" name="tinggi_badan"
+                                            value="{{ old('tinggi_badan', $penimbanganbumil->tinggi_badan) }}">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button" id="tinggi_badan"
                                                 disabled>Cm</button>
                                         </div>
                                     </div>
+                                    @error('tinggi_badan')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -78,26 +86,54 @@
                                         class="text-danger"></span>
                                 </label>
                                 <div class="col-lg-6">
-                                    <div class="input-group mb-3">
+                                    <div class="input-group">
                                         <input type="text" class="form-control" placeholder="60"
-                                            aria-describedby="lila" name="lila">
+                                            aria-describedby="lila" name="lila"
+                                            value="{{ old('lila', $penimbanganbumil->lila) }}">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button" id="lila"
                                                 disabled>Cm</button>
                                         </div>
                                     </div>
+                                    @error('lila')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-lg-4 col-form-label" for="diagnosa">Diagnosa<span
+                                <label class="col-lg-4 col-form-label" for="g2">G2(Kehamilan)<span
                                         class="text-danger"></span>
                                 </label>
                                 <div class="col-lg-6">
-                                    <select name="diagnosa" class="form-control" id="diagnosa">
-                                        <option value="G1">G1</option>
-                                        <option value="P0">P0</option>
-                                        <option value="A0">A0</option>
-                                    </select>
+                                    <input type="number" class="form-control" id="g2" name="g2"
+                                        maxlength="1" value="{{ old('g2', $penimbanganbumil->g2) }}">
+                                    @error('g2')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="p2">P2(Melahirkan)<span
+                                        class="text-danger"></span>
+                                </label>
+                                <div class="col-lg-6">
+                                    <input type="number" class="form-control" id="p2" name="p2"
+                                        maxlength="1" value="{{ old('p2', $penimbanganbumil->p2) }}">
+                                    @error('p2')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="a0">A0(Keguguran)<span
+                                        class="text-danger"></span>
+                                </label>
+                                <div class="col-lg-6">
+                                    <input type="number" class="form-control" id="a0" name="a0"
+                                        maxlength="1" value="{{ old('a0', $penimbanganbumil->a0) }}">
+                                    @error('a0')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -106,7 +142,9 @@
                                         class="text-danger"></span>
                                 </label>
                                 <div class="col-lg-6">
-                                    <textarea class="form-control" id="keterangan" name="keterangan" rows="3"></textarea>
+                                    <textarea class="form-control" id="keterangan" name="keterangan" rows="3">
+                                        {{ $penimbanganbumil->keterangan }}
+                                    </textarea>
                                 </div>
                             </div>
 

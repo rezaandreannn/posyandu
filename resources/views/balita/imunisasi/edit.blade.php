@@ -81,6 +81,9 @@
                                 </label>
                                 <div class="col-lg-6">
                                     <textarea class="form-control" id="keterangan" name="keterangan" rows="3"></textarea>
+                                    @error('keterangan')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group row">

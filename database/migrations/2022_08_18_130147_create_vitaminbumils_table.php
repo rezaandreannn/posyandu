@@ -20,6 +20,12 @@ class CreateVitaminbumilsTable extends Migration
             $table->string('status')->default('antri');
             $table->string('posyandu')->nullable();
             $table->timestamps();
+
+            $table->foreign('bumil_id')
+                ->references('id')
+                ->on('bumils')
+                ->onUpdate('restrict')
+                ->onDelete('cascade');
         });
     }
 

@@ -21,6 +21,12 @@ class CreateImunisasibumilsTable extends Migration
             $table->string('keterangan')->nullable();
             $table->string('posyandu')->nullable();
             $table->timestamps();
+
+            $table->foreign('bumil_id')
+                ->references('id')
+                ->on('bumils')
+                ->onUpdate('restrict')
+                ->onDelete('cascade');
         });
     }
 

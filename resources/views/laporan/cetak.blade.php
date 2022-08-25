@@ -89,11 +89,11 @@
                     <th>Usia</th>
                     <th>Usia Hamil</th>
                     <th>Alamat</th>
-                    <th>G</th>
-                    <th>P</th>
+                    <th>G2</th>
+                    <th>P2</th>
                     <th>A</th>
                     <th>BB</th>
-                    <th>TT</th>
+                    <th>TB</th>
                     <th>LILA</th>
                 </tr>
             </thead>
@@ -109,21 +109,10 @@
                             Minggu
                         </td>
                         <td>{{ $penimbangan->bumil->alamat }}</td>
-                        <td>
-                            @if ($penimbangan->diagnosa == 'G1')
-                                <i class="fas fa-check"></i>
-                            @endif
-                        </td>
-                        <td>
-                            @if ($penimbangan->diagnosa == 'P0')
-                                <i class="fas fa-check"></i>
-                            @endif
-                        </td>
-                        <td>
-                            @if ($penimbangan->diagnosa == 'A0')
-                                <i class="fas fa-check"></i>
-                            @endif
-                        </td>
+                        <td>{{ $penimbangan->g2 }}</td>
+                        <td>{{ $penimbangan->p2 }}</td>
+                        <td>{{ $penimbangan->a0 }}</td>
+
                         <td>{{ $penimbangan->berat_badan }} Kg</td>
                         <td>{{ $penimbangan->tinggi_badan }} Cm</td>
                         <td>{{ $penimbangan->lila }} Cm</td>

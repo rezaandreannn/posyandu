@@ -49,14 +49,18 @@
                                         class="text-danger"></span>
                                 </label>
                                 <div class="col-lg-6">
-                                    <div class="input-group mb-3">
+                                    <div class="input-group">
                                         <input type="text" class="form-control" placeholder="4.5"
-                                            aria-describedby="berat_badan" name="berat_badan">
+                                            aria-describedby="berat_badan" name="berat_badan"
+                                            value="{{ old('berat_badan') }}">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button" id="berat_badan"
                                                 disabled>Kg</button>
                                         </div>
                                     </div>
+                                    @error('berat_badan')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -65,14 +69,18 @@
                                         class="text-danger"></span>
                                 </label>
                                 <div class="col-lg-6">
-                                    <div class="input-group mb-3">
+                                    <div class="input-group">
                                         <input type="text" class="form-control" placeholder="90"
-                                            aria-describedby="tinggi_badan" name="tinggi_badan">
+                                            aria-describedby="tinggi_badan" name="tinggi_badan"
+                                            value="{{ old('tinggi_badan') }}">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button" id="tinggi_badan"
                                                 disabled>Cm</button>
                                         </div>
                                     </div>
+                                    @error('tinggi_badan')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -81,6 +89,9 @@
                                 </label>
                                 <div class="col-lg-6">
                                     <textarea class="form-control" id="keterangan" name="keterangan" rows="3"></textarea>
+                                    @error('keterangan')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
 

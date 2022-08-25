@@ -17,7 +17,7 @@
                     <h4 class="card-title">
                         <div class="row">
                             <div class="col-md-2"><a href="{{ route('user.create') }}" class="btn btn-primary">Tambah
-                                    Peran</a></div>
+                                    Pengguna</a></div>
                             <div class="col-md-4">
                                 <form action="" method="get">
                                     <div class="input-group">

@@ -20,6 +20,12 @@ class CreateVitaminbalitasTable extends Migration
             $table->string('status')->default('antri');
             $table->string('posyandu')->nullable();
             $table->timestamps();
+
+            $table->foreign('balita_id')
+                ->references('id')
+                ->on('balitas')
+                ->onUpdate('restrict')
+                ->onDelete('cascade');
         });
     }
 
