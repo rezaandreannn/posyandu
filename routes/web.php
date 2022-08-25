@@ -29,9 +29,9 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 Route::get('/', function () {
     return view('frond.index');
 });
-Route::get('/lap', function () {
-    return view('laporan.cetak');
-});
+// Route::get('/lap', function () {
+//     return view('laporan.cetak');
+// });
 
 
 
