@@ -46,16 +46,14 @@
                                 <div class="col-lg-6">
                                     <div class="input-group mb-3">
                                         <select name="posyandu" id="posyandu" class="form-control">
-                                            @foreach (App\Models\User::POSYANDU as $posyandu)
-                                                <option value="{{ $posyandu }}">{{ $posyandu }}</option>
+                                            @foreach (App\Models\Posyandu::all() as $posyandu)
+                                                <option value="{{ $posyandu->nama }}" selected>{{ $posyandu->nama }}
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
                             </div>
                     </div>
-
-
 
                     <div class="form-group row">
                         <div class="col-lg-8 ml-auto">

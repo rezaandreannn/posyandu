@@ -123,6 +123,7 @@ class PenimbanganbalitaController extends Controller
         ]);
 
         $data['status'] = 'sukses';
+        $data['keterangan'] = $request->keterangan;
 
         Penimbanganbalita::where('id', $penimbanganbalita->id)
             ->update($data);

@@ -37,6 +37,7 @@ Route::get('/', function () {
 
 Route::middleware('auth', 'ceklogin:admin')->group(function () {
     Route::Resource('role', 'App\Http\Controllers\RoleController');
+    Route::Resource('posyandu', 'App\Http\Controllers\PosyanduController');
     Route::Resource('user', 'App\Http\Controllers\UserController');
     Route::get('setting', [SettingController::class, 'edit'])->name('setting.edit');
     Route::patch('setting/{setting}', [SettingController::class, 'update'])->name('setting.update');

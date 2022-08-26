@@ -86,6 +86,7 @@
                 <ul aria-expanded="false">
                     <li><a href="{{ route('user.index') }}">Pengguna</a></li>
                     <li><a href="{{ route('role.index') }}">Peran</a></li>
+                    <li><a href="{{ route('posyandu.index') }}">Posyandu</a></li>
                     <li><a href="{{ route('setting.edit') }}">Antrian</a></li>
                 </ul>
             </li>

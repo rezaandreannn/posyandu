@@ -21,7 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('nik')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('posyandu', ['Posyandu Mawar', 'Posyandu Teratai', 'Posyandu Matahari', 'Posyandu Melati', 'Posyandu Anggrek'])->nullable();
+            $table->string('posyandu')->nullable();
+            // $table->enum('posyandu', ['Posyandu Mawar', 'Posyandu Teratai', 'Posyandu Matahari', 'Posyandu Melati', 'Posyandu Anggrek'])->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

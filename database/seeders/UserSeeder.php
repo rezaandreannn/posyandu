@@ -23,9 +23,17 @@ class UserSeeder extends Seeder
         ]);
         User::create([
             'role_id' => 2,
-            'name' => 'posyandu teratai',
-            'email' => 'tes@gmail.com',
+            'name' => 'Mawar',
+            'email' => 'mawar@gmail.com',
             'nik' => '234563601',
+            'password' => bcrypt('password'),
+            'posyandu' => 'Posyandu Mawar',
+        ]);
+        User::create([
+            'role_id' => 2,
+            'name' => 'Teratai',
+            'email' => 'teratai@gmail.com',
+            'nik' => '234563602',
             'password' => bcrypt('password'),
             'posyandu' => 'Posyandu Teratai',
         ]);

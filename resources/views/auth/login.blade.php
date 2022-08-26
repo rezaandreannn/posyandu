@@ -53,7 +53,7 @@
             @csrf
             <div class="form-group">
                 <div>
-                    <x-label for="nik" :value="__('nik')" />
+                    <x-label for="nik" :value="__('NIK/NIP')" />
 
                     <x-input id="nik" class="" type="text" name="nik" :value="old('nik')" required
                         autofocus />

@@ -12,6 +12,41 @@
             </div>
             <div class="card-body text-primary">
                 <div class="row">
+                    @foreach ($posyandus as $posyandu)
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card" style="background-color: {{ $posyandu->warna }}">
+                                <div class="card-body">
+                                    <h3 class="card-title {{ $posyandu->warna ? 'text-white' : 'text-black' }}">
+                                        {{ $posyandu->nama }}</h3>
+                                    <div class="d-inline-block">
+                                        @php
+                                            $balita = DB::table('balitas')
+                                                ->join('users', 'users.id', '=', 'balitas.user_id')
+                                                ->select('balitas.*', 'users.name', 'users.posyandu')
+                                                ->where('users.posyandu', $posyandu->nama)
+                                                ->get();
+                                            
+                                            $bumil = DB::table('bumils')
+                                                ->join('users', 'users.id', '=', 'bumils.user_id')
+                                                ->select('bumils.*', 'users.name', 'users.posyandu')
+                                                ->where('users.posyandu', $posyandu->nama)
+                                                ->get();
+                                        @endphp
+                                        <h5 class=" {{ $posyandu->warna ? 'text-white' : 'text-black' }}">Balita. (
+                                            {{ $balita->count() }} )</h5>
+                                        <h5 class=" {{ $posyandu->warna ? 'text-white' : 'text-black' }}">Ibu Hamil.
+                                            ({{ $bumil->count() }} )</h5>
+                                        <p class=" {{ $posyandu->warna ? 'text-white' : 'text-black' }} mb-0">Tgl.
+                                            {{ date('d-m-Y') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            {{-- <div class="card-body text-primary">
+                <div class="row">
                     <div class="col-lg-3 col-sm-6">
                         <div class="card gradient-1">
                             <div class="card-body">
@@ -75,7 +110,7 @@
 
                 </div>
 
-            </div>
+            </div> --}}
         </div>
 
 

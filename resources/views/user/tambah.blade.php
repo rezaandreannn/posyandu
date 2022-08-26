@@ -62,13 +62,8 @@
                                 <div class="col-lg-6">
                                     <select class="custom-select form-control" name="posyandu" id="inputGroupSelect04"
                                         aria-label="Example select with button addon">
-                                        @foreach (App\Models\User::POSYANDU as $posyandu)
-                                            @if ($posyandu == Request('posyandu'))
-                                                <option value="{{ $posyandu }}" selected>{{ $posyandu }}
-                                                </option>
-                                            @else
-                                                <option value="{{ $posyandu }}">{{ $posyandu }}</option>
-                                            @endif
+                                        @foreach (App\Models\Posyandu::all() as $posyandu)
+                                            <option value="{{ $posyandu->nama }}" selected>{{ $posyandu->nama }}
                                         @endforeach
                                     </select>
                                     @error('posyandu')
